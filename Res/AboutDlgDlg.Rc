@@ -1,0 +1,16 @@
+#define IDD_ABOUTDLG 1000
+#define IDCD_OK 1001
+#define IDC_STC1 1002
+#define IDC_STC2 1003
+#define IDC_STC3 1004
+IDD_ABOUTDLG DIALOGEX 6,6,165,137
+CAPTION "О программе"
+FONT 8,"MS Sans Serif"
+STYLE 0x90870000
+EXSTYLE 0x00000000
+BEGIN
+  CONTROL "Пока!",IDCD_OK,"Button",0x50010000,48,112,62,17,0x00000000
+  CONTROL "Эта игра была написана для моей любимой жены и моего удовольствия :) Данная версия включает в себя 138 уровней и бесконечную (теоретически) глубину отмен хода. Код не супер, так как написан на скорую руку, но я обещаю его улучшить...",IDC_STC1,"Static",0x50800001,6,5,152,65,0x00020200
+  CONTROL "IDC_STC",IDC_STC2,"Static",0x50000000,64,44,0,0,0x00000000
+  CONTROL "crow16384 crow16384@mail.ru",IDC_STC3,"Static",0x50000000,66,79,94,19,0x00000000
+END

@@ -1,0 +1,25 @@
+#define VERINF1 1
+VERINF1 VERSIONINFO
+FILEVERSION 2,0,1,6
+PRODUCTVERSION 2,0,1,6
+FILEOS 0x00000004
+FILETYPE 0x00000001
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "041904E3"
+    BEGIN
+      VALUE "CompanyName", "Crow16384\0"
+      VALUE "FileVersion", "2.0.1.6\0"
+      VALUE "FileDescription", "This is small game written on assembler just for fun!\0"
+      VALUE "LegalCopyright", "Vladimir A. Larchenko\0"
+      VALUE "OriginalFilename", "Win32Soko\0"
+      VALUE "ProductName", "Win32 Sokoban game\0"
+      VALUE "ProductVersion", "2.0.1.6\0"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x0419, 0x04E3
+  END
+END

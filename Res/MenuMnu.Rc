@@ -1,0 +1,27 @@
+#define MainMenu 10000
+#define IDM_NEWGAME 10001
+#define IDM_SAVE 10002
+#define IDM_LOAD 10003
+#define IDM_WANT_LEVEL 10008
+#define IDM_EXIT 10004
+#define IDM_UNDO 10005
+#define IDM_RESTART 10006
+#define IDM_ABOUT 10007
+MainMenu MENUEX
+BEGIN
+  POPUP "Игра",,,
+  BEGIN
+    MENUITEM "&Новая игра\tCtrl+N",IDM_NEWGAME,,
+    MENUITEM "&Сохранить\tCtrl+S",IDM_SAVE,,
+    MENUITEM "&Загрузить\tCtrl+L",IDM_LOAD,,
+    MENUITEM "&Загрузить уровень\tCtrl+D",IDM_WANT_LEVEL,,
+    MENUITEM "",,0x00000800,
+    MENUITEM "&Выход",IDM_EXIT,,
+  END
+  POPUP "Ход",,,
+  BEGIN
+    MENUITEM "&Отмена хода\tCtrl+Z",IDM_UNDO,,0x00000001
+    MENUITEM "&Уровень заново\tCtrl+R",IDM_RESTART,,
+  END
+  MENUITEM "О программе",IDM_ABOUT,,
+END

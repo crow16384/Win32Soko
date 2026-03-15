@@ -1,0 +1,4 @@
+#define MyAccelk 0
+MyAccelk ACCELERATORS DISCARDABLE
+BEGIN
+END

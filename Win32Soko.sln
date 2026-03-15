@@ -1,0 +1,17 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB9-8B4A-11D0-8D11-00A0C91BC942}") = "Win32Soko.exe", "Win32Soko.exe", "{8C4C5ED5-987F-4769-B3B4-ED7683771147}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{8C4C5ED5-987F-4769-B3B4-ED7683771147}.Debug.ActiveCfg = Debug
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,40 @@
+#include <C:\MASM32\INCLUDE\RESOURCE.H>
+#include <Res\MenuMnu.rc>
+#include <Res\AboutDlgDlg.rc>
+#include "Res\Win32SokoVer.rc"
+#include "Res/WhatLevelDlg.rc"
+#include "Res/Win32SokoAcl.rc"
+
+
+#define   IDB_MAN            2000
+#define   IDB_TILE           2001
+#define   IDB_BOX            2002
+#define   IDB_ABOUT          2003
+#define   IDI_ICONBIG        2004
+#define   IDI_ICONSMALL      2005
+#define   ID_DATA		     2006
+
+
+#define   IDCD_OK             1001
+
+
+IDB_MAN              RCDATA  DISCARDABLE    "Res\\Man.png"
+IDB_TILE             RCDATA  DISCARDABLE    "Res\\Tile.png"
+IDB_BOX              RCDATA  DISCARDABLE    "Res\\Box.png"
+IDI_ICONBIG          ICON    DISCARDABLE    "Res\\IconBig.ico"
+IDI_ICONSMALL        ICON    DISCARDABLE    "Res\\IconSmall.ico"
+;ID_DATA				 RCDATA	 DISCARDABLE 	"Res\\data"  
+
+
+ 
+MyAccel ACCELERATORS DISCARDABLE
+BEGIN
+	"Z",	IDM_UNDO,		VIRTKEY, NOINVERT, CONTROL
+	"N",	IDM_NEWGAME,	VIRTKEY, NOINVERT, CONTROL
+	"R",	IDM_RESTART,	VIRTKEY, NOINVERT, CONTROL
+	"S",	IDM_SAVE,		VIRTKEY, NOINVERT, CONTROL
+	"L",	IDM_LOAD,		VIRTKEY, NOINVERT, CONTROL	
+	"D",	IDM_WANT_LEVEL, VIRTKEY, NOINVERT, CONTROL	
+END
+
+1 24 DISCARDABLE "controls.exe.manifest"
