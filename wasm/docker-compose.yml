@@ -1,0 +1,9 @@
+services:
+  sokoban:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: win32soko-wasm:latest
+    ports:
+      - "8080:80"
+    restart: unless-stopped

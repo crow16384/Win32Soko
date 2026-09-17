@@ -21,6 +21,24 @@ trunk serve
 
 Open http://127.0.0.1:8080/
 
+## Docker
+
+Build and run a production image that serves the static Trunk output with nginx:
+
+```bash
+cd wasm
+docker compose up --build
+```
+
+Or without Compose:
+
+```bash
+docker build -t win32soko-wasm .
+docker run --rm -p 8080:80 win32soko-wasm
+```
+
+Then open http://127.0.0.1:8080/
+
 ## Controls
 
 - Arrow keys or swipe on the board to move

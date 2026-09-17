@@ -90,17 +90,12 @@ async fn wait_image(img: &HtmlImageElement) -> Result<(), JsValue> {
     if img.complete() && img.natural_width() > 0 {
         return Ok(());
     }
-    let promise = js_sys::Promise::new(&mut |resolve, reject| {
-        let onload = Closure::once_into_js(move || {
-            let _ = resolve.call0(&JsValue::NULL);
-        });
-        let onerror = Closure::once_into_js(move || {
-            let _ = reject.call1(&JsValue::NULL, &JsValue::from_str("img error"));
-        });
-        img.set_onload(Some(onload.as_ref().unchecked_ref()));
-        img.set_onerror(Some(onerror.as_ref().unchecked_ref()));
-    });
-    wasm_bindgen_futures::JsFuture::from(promise).await?;
+    // Prefer decode() so we don't rely on onload closures that can be dropped
+    // before the image finishes (common hang on cold caches / Docker).
+    let promise = img.decode();
+    wasm_bindgen_futures::JsFuture::from(promise)
+        .await
+        .map_err(|e| JsValue::from(format!("image decode failed: {e:?}")))?;
     Ok(())
 }
 
@@ -497,8 +492,24 @@ pub fn main() {
     wasm_bindgen_futures::spawn_local(async {
         if let Err(e) = boot().await {
             web_sys::console::error_1(&e);
+            if let Some(node) = document().get_element_by_id("overlay-loading") {
+                let msg = e
+                    .as_string()
+                    .unwrap_or_else(|| format!("{e:?}"));
+                node.set_inner_html(&format!(
+                    "<div class=\"modal compact\"><p>Failed to load: {}</p></div>",
+                    html_escape(&msg)
+                ));
+            }
         }
     });
+}
+
+fn html_escape(s: &str) -> String {
+    s.replace('&', "&amp;")
+        .replace('<', "&lt;")
+        .replace('>', "&gt;")
+        .replace('"', "&quot;")
 }
 
 async fn boot() -> Result<(), JsValue> {

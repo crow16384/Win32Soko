@@ -10,4 +10,11 @@ cd wasm
 trunk serve
 ```
 
+Or with Docker:
+
+```bash
+cd wasm
+docker compose up --build
+```
+
 See [wasm/README.md](wasm/README.md) for controls and layout.
