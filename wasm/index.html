@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Win32 Sokoban</title>
+  <link rel="icon" href="assets/IconSmall.ico" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">S</span>
+        <div class="brand-text">
+          <h1>Sokoban</h1>
+          <p class="tagline">138 classic puzzles</p>
+        </div>
+      </div>
+      <div class="hud">
+        <div class="stat"><span class="label">Pack</span><span id="hud-pack">Classic</span></div>
+        <div class="stat"><span class="label">Level</span><span id="hud-level">1</span></div>
+        <div class="stat"><span class="label">Boxes</span><span id="hud-boxes">0</span></div>
+        <div class="stat"><span class="label">Moves</span><span id="hud-moves">0</span></div>
+      </div>
+    </header>
+
+    <main class="stage">
+      <div class="board-frame">
+        <canvas id="game" width="640" height="512" tabindex="0" aria-label="Sokoban board"></canvas>
+      </div>
+
+      <nav class="controls" aria-label="Game controls">
+        <button type="button" id="btn-undo" title="Ctrl+Z">Undo</button>
+        <button type="button" id="btn-redo" title="Ctrl+Shift+Z">Redo</button>
+        <button type="button" id="btn-restart" title="Ctrl+R">Restart</button>
+        <button type="button" id="btn-levels" title="Ctrl+D">Levels</button>
+        <button type="button" id="btn-export" title="Ctrl+S">Export</button>
+        <button type="button" id="btn-import" title="Ctrl+L">Import</button>
+        <button type="button" id="btn-about">About</button>
+        <input type="file" id="file-import" accept=".sok,application/octet-stream" hidden />
+      </nav>
+
+      <p class="hint">Arrow keys or swipe to move · Ctrl+Z undo · Ctrl+R restart</p>
+    </main>
+  </div>
+
+  <div id="overlay-win" class="overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal">
+      <h2 id="win-title">Level complete!</h2>
+      <p id="win-body">Well done.</p>
+      <button type="button" id="btn-next" class="primary">Next level</button>
+    </div>
+  </div>
+
+  <div id="overlay-levels" class="overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal wide">
+      <div class="modal-head">
+        <h2>Select level</h2>
+        <button type="button" id="btn-levels-close" class="icon-close" aria-label="Close">×</button>
+      </div>
+      <div id="level-browser" class="level-browser"></div>
+    </div>
+  </div>
+
+  <div id="overlay-about" class="overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-head">
+        <h2>About</h2>
+        <button type="button" id="btn-about-close" class="icon-close" aria-label="Close">×</button>
+      </div>
+      <p>
+        Browser remake of <strong>Win32 Sokoban</strong>, originally written in pure x86 assembly
+        by Crow16384 in 2004 for his wife — 138 levels and unlimited undo.
+      </p>
+      <p>
+        Classic (1–50), Extra (51–92), and Yoshio Murase (93–138) packs are preserved from the
+        original. Pixel sprites are the originals; the shell is new.
+      </p>
+      <p class="credit">crow16384 · crow16384@mail.ru · 2004</p>
+      <button type="button" id="btn-about-ok" class="primary">Got it</button>
+    </div>
+  </div>
+
+  <div id="overlay-loading" class="overlay">
+    <div class="modal compact">
+      <p>Loading puzzles…</p>
+    </div>
+  </div>
+
+  <link data-trunk rel="rust" href="app" data-wasm-opt="z" />
+  <link data-trunk rel="copy-dir" href="assets" />
+  <link data-trunk rel="css" href="style.css" />
+</body>
+</html>

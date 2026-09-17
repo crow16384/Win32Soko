@@ -1,2 +1,5 @@
 .DS_*
 *.obj
+wasm/dist/
+wasm/target/
+**/target/
